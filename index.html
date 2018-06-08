@@ -5,25 +5,30 @@
   <meta charset="UTF-8">
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="js/qrcode.js"></script>
+  <script src="js/eos-api.js"></script>
   <link rel="stylesheet" href="css/stile.css"/>
   <script src="js/sistema.js"></script>
   <title>EOS Paper Wallet</title>
 </head>
 <body>
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong>Alert !</strong> Don't share the private key!
+      </div>
   <!-- Form per insermento dati wallet per poi creare i codic QR e Wallet paper-->
-  <br><center><form class="boxDatiWallet" style="width:500px;">
+  <br><center><form class="boxDatiWallet" style="width:600px;">
       <div class="col-3">
           <label>Public address</address></label>
-          <input id="IndirizzoPubblico" type="text" placeholder="ex: " value="" />
+          <div style="color:green" id="publicKey"> </div>
       </div>
       <div class="col-3">
           <label>Private key</label>
-          <input id="ChiavePrivata" type="text" placeholder="ex: " value=""/>
+          <div style="color:red" id="privateKey"></div>
       </div>
-      Hide private key<input type="checkbox" id="checkboxNascondiChiavePrivata"/>
+      Hide private key <input type="checkbox" id="checkboxNascondiChiavePrivata"/>
       <hr>
       <div class="col-3">
-          <a href="javascript:generate();"><button   type="button" >Generete Wallet Paper QR</button ></a>
+          <button   onclick="inizializza();" type="button" >Generete new</button >
           <button type="button" onClick="window.print()">Print</button>
       </div>                        
   </form></center>
